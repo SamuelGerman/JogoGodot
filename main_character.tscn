@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://de83ki2i2xhoy"]
+
+[ext_resource type="Script" uid="uid://dq3riw2w5fopt" path="res://character/main_character.gd" id="1_qt5ce"]
+[ext_resource type="Texture2D" uid="uid://dv5whbgadmr5p" path="res://sprites/direito.png" id="1_xdxtq"]
+[ext_resource type="Texture2D" uid="uid://b2lca2561077g" path="res://sprites/correndo.png" id="2_qt5ce"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ptrd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xdxtq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qt5ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_xdxtq")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2q82o"]
+radius = 90.0
+height = 456.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_qt5ce")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(624, 392)
+sprite_frames = SubResource("SpriteFrames_4ptrd")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(603, 397)
+shape = SubResource("CapsuleShape2D_2q82o")
